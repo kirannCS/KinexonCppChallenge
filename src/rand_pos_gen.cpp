@@ -11,7 +11,7 @@ unsigned long getCurrentTimeInMicroseconds() {
 }
 
 void positionGenerator(int thread_index) {
-	std::unique_ptr<PositionData> playerPos = std::make_unique<PositionData>(); // thread_index as player id
+	std::unique_ptr<PositionData> playerPos = std::make_unique<PositionData>();
 	GeneratedPosition *posMessage = new GeneratedPosition(); // Protobuf class GeneratedPosition
 	
 	std::unique_ptr<ZmqPublisher> publisher = std::make_unique<ZmqPublisher>(); // For publishing sensor data
