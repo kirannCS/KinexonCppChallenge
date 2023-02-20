@@ -4,8 +4,8 @@ project(posgen VERSION 1.0)
 
 # Two different implementations of position generator program based on how many zmq sockets are used.
 # Hence, uncomment only one of the below two lines
-set(SRC_FILES src/position_data.cpp src/rand_pos_gen.cpp)
-#set(SRC_FILES src/position_data.cpp src/rand_pos_gen_one_skt.cpp)
+#set(SRC_FILES src/position_data.cpp src/rand_pos_gen.cpp)
+set(SRC_FILES src/position_data.cpp src/rand_pos_gen_one_skt.cpp)
 add_executable(posgen ${SRC_FILES})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/header)
 

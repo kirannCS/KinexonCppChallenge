@@ -23,7 +23,6 @@ void positionGenerator(int thread_index, std::mutex &m, ZmqPublisher *publisher)
 	while(count--) {
 		playerPos->generateRandPointInCircle(); // Gets player's next random (x,y,z) position
 		playerPos->addNoise(); // Add noise of +- 30cm
-		playerPos->printCurPosition(thread_index);
 
 		// Store (x,y,z) into Data3d protobuf
 		Data3d *xyzCoordinates = new Data3d(); // freeing memory for this ptr is implicit to the class implementation
@@ -42,6 +41,7 @@ void positionGenerator(int thread_index, std::mutex &m, ZmqPublisher *publisher)
         m.lock();
 		bool res  = publisher->send("SENSOR_DATA", data_to_publish); // Publish player's position via zmq_pub skt
 		if(!res) {std::cerr << "zeromq sending message failed\n";}
+		playerPos->printCurPosition(thread_index);
 		m.unlock();
 
 		// Append new (x,y) into csv file for visualisation
