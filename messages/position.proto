@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+message GeneratedPosition {
+	uint64 sensorId = 1;
+	uint64 timestamp_usec = 2;
+	Data3d position = 3;
+}
+
+message Data3d {
+	float x = 1;
+	float y = 2;
+	float z = 3;
+}
